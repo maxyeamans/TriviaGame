@@ -2,14 +2,18 @@ $(document).ready(function () {
 
     // Leaving this blank for copy/pasting later
     var QuizItem1 = {
-        "Question": "Question text",
+        "Question": "What does the 'TIE' in TIE Fighter stand for?",
         "Answers": {
-            "Answer1": "Answer 1 here",
-            "Answer2": "Answer 2 here",
-            "Answer3": "Answer 3 here",
-            "Answer4": "Answer 4 here"
+            "Answer1": {
+                "Text" : "Twin Integrated Engine", "Correct": false }, 
+            "Answer2": {
+                "Text" : "Trivial Imperial Ergonomics", "Correct": false }, 
+            "Answer3": {
+                "Text" : "Twin Ion Engine", "Correct": false }, 
+            "Answer4": {
+                "Text" : "Some other acronym I don't know", "Correct": false }
         },
-        "CorrectAnswer": "Correct Answer here"
+        
     }
 
     var QuizItems = [QuizItem1];
@@ -21,6 +25,10 @@ $(document).ready(function () {
     */
 
     function DisplayQuizItem( item ) {
-        $("#display-area").append
+        var displayedQuestion = this.Question;
+        $("#display-area").append( displayedQuestion );
     }
+
+    console.log("Question 1:", QuizItem1.Question);
+    console.log("")
 });
