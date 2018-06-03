@@ -50,36 +50,35 @@ $(document).ready(function () {
         CorrectAnswer: "Kashyyyk"
     };
 
-    var QuizItems = [QuizItem1, QuizItem2];
+    var QuizItems = [QuizItem1, QuizItem2, QuizItem3, QuizItem4, QuizItem5];
 
-
+    
     /*
     I can create a bunch of quiz items, add them all to the QuizItems array, and then have a function
     that accepts a quiz item as an argument. Once the function is set up, I'll set up a for loop that
     iterates through the QuizItems array.
     */
-
-    function DisplayQuizItem(item) {
-        // Clear the quiz item container
-        $("#display-area").empty();
-        // Load the quiz item to a variable
-        currentQuizItem = item;
-        // Display the question on the page
-        $("#display-area").append($("<h3>").text(item.Question));
-        // TODO: add a loop that adds each of the questions from the QuizItem.Answers array
-        // Display the potential answers on the page
-        item.Answers.forEach( function( answer ) {
-            $("#display-area").append($("<p>").text( answer ).addClass("answer p-2 rounded text-center"));         
+   
+   function DisplayQuizItem(item) {
+       // Clear the quiz item container
+       $("#display-area").empty();
+       // Load the quiz item to a variable
+       currentQuizItem = item;
+       // Display the question on the page
+       $("#display-area").append($("<h3>").text(item.Question));
+       // TODO: add a loop that adds each of the questions from the QuizItem.Answers array
+       // Display the potential answers on the page
+       item.Answers.forEach( function( answer ) {
+           $("#display-area").append($("<p>").text( answer ).addClass("answer p-2 rounded text-center"));         
         });
     }
 
+    $("#display-area").on("click", ".answer", function() {
+        console.log("Something happened");
+    });
+    
     $("#start-button").on("click", function() {
         DisplayQuizItem( QuizItem1 );
     });
-
-    $(".answer").on("click", function() {
-        console.log("Click registered.");
-    });
-
-
+    
 });
