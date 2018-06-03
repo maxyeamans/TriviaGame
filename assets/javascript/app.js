@@ -8,7 +8,7 @@ $(document).ready(function () {
         Question: "What was the question?",
         Answers: ["First answer","Second answer","Third answer","Fourth answer"],
         CorrectAnswer: "The correct answer"
-        },
+    };
 
     I could probably make the CorrectAnswer property equal to the array index of the correct answer
     in the Answers array. Not sure if that would be more efficient or not. 
@@ -20,13 +20,31 @@ $(document).ready(function () {
         "Question": "What does the 'TIE' in TIE Fighter stand for?",
         "Answers": ["Twice Integrated Engine", "Triton Instigated Exhaust", "Twin Ion Engine", "Tachyon Ignition Engine"],
         "Correct Answer": "Twin Ion Engine"
-    },
+    };
 
     var QuizItem2 = {
         Question: "What is the official name of the walkers that assaulted the rebel base on Hoth?",
         Answers: ["AT-AT", "Camel Walker", "AT-ST", "Walking Thingies"],
         CorrectAnswer: "AT-AT"
-    },
+    };
+
+    var QuizItem3 = {
+        Question: "What's the highest military rank that Han Solo reached?",
+        Answers: ["Captain","Colonel","Admiral","General"],
+        CorrectAnswer: "General"
+    };
+
+    var QuizItem4 = {
+        Question: "What's the model number for the Millenium Falcon?",
+        Answers: ["YT-2400","T-65","YT-1300","MF-5010"],
+        CorrectAnswer: "YT-1300"
+    };
+
+    var QuizItem5 = {
+        Question: "What planet is Chewbacca from?",
+        Answers: ["Sullust","Kashyyyk","Ryloth","Endor"],
+        CorrectAnswer: "Kashyyyk"
+    };
 
     var QuizItems = [QuizItem1, QuizItem2];
 
@@ -38,12 +56,19 @@ $(document).ready(function () {
     */
 
     function DisplayQuizItem(item) {
-        // var quizQuestion = $("<h3>").text(item.Question);
-        
+        $("#display-area").empty();
+        // Display the question on the page
         $("#display-area").append($("<h3>").text(item.Question));
         // TODO: add a loop that adds each of the questions from the QuizItem.Answers array
+        // Display the potential answers on the page
+        item.Answers.forEach( function( answer ) {
+            $("#display-area").append($("<p>").text( answer ).addClass("question p-2 w-75 bg-danger rounded text-center"));         
+        });
     }
 
-    console.log("Question 1:", QuizItem1.Question);
-    console.log("")
+    $("#start-button").on("click", function() {
+        DisplayQuizItem( QuizItem1 );
+    });
+
+
 });
