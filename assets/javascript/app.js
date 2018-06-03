@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    // *Global game variables
+    var numWins = 0;
+    var numLosses = 0;
+    var currentQuizItem;
     /*
 
     Question Template
@@ -56,18 +60,25 @@ $(document).ready(function () {
     */
 
     function DisplayQuizItem(item) {
+        // Clear the quiz item container
         $("#display-area").empty();
+        // Load the quiz item to a variable
+        currentQuizItem = item;
         // Display the question on the page
         $("#display-area").append($("<h3>").text(item.Question));
         // TODO: add a loop that adds each of the questions from the QuizItem.Answers array
         // Display the potential answers on the page
         item.Answers.forEach( function( answer ) {
-            $("#display-area").append($("<p>").text( answer ).addClass("question p-2 w-75 bg-danger rounded text-center"));         
+            $("#display-area").append($("<p>").text( answer ).addClass("answer p-2 rounded text-center"));         
         });
     }
 
     $("#start-button").on("click", function() {
         DisplayQuizItem( QuizItem1 );
+    });
+
+    $(".answer").on("click", function() {
+        console.log("Click registered.");
     });
 
 
