@@ -1,0 +1,22 @@
+After clicking OK
+
+Display the question
+    Display the question text in a class="lead"
+    Display the answers with radio buttons next to them
+    Declare a variable to hold the seconds left for the question
+    Start an interval timer for 1-second intervals
+    When the interval counts down to 1:
+        if correct answer selected
+            display "correct" message
+            move on to next question
+        else if incorrect answer selected
+            display "incorrect message"
+            display correct answer
+            move on to next question
+
+After reaching the end of questions
+    Display the total number correct
+    Display the total time remaining from all of the questions
+        Possibly add points for each additional second left on the clock?
+    Display button to restart the game.
+ 

@@ -1,25 +1,34 @@
 $(document).ready(function () {
 
-    // Leaving this blank for copy/pasting later
+    /*
+
+    Question Template
+
+    var QuizItemX = {
+        Question: "What was the question?",
+        Answers: ["First answer","Second answer","Third answer","Fourth answer"],
+        CorrectAnswer: "The correct answer"
+        },
+
+    I could probably make the CorrectAnswer property equal to the array index of the correct answer
+    in the Answers array. Not sure if that would be more efficient or not. 
+
+    */
     var QuizItem1 = {
         "Question": "What does the 'TIE' in TIE Fighter stand for?",
-        "Answers": {
-            "Answer1": {
-                "Text" : "Twice Integrated Engine",
-                "Correct": false }, 
-            "Answer2": {
-                "Text" : "Triton Instigated Exhaust",
-                "Correct": false }, 
-            "Answer3": {
-                "Text" : "Twin Ion Engine",
-                "Correct": false }, 
-            "Answer4": {
-                "Text" : "Tachyon Ignition Engine",
-                "Correct": false }
-        }, 
-    }
+        "Answers": ["Twice Integrated Engine", "Triton Instigated Exhaust", "Twin Ion Engine", "Tachyon Ignition Engine"],
+        "Correct Answer": "Twin Ion Engine"
+    },
 
-    var QuizItems = [QuizItem1];
+    var QuizItem2 = {
+        Question: "What is the official name of the walkers that assaulted the rebel base on Hoth?",
+        Answers: ["AT-AT", "Camel Walker", "AT-ST", "Walking Thingies"],
+        CorrectAnswer: "AT-AT"
+    },
+
+    var QuizItems = [QuizItem1, QuizItem2];
+
+    // TODO: fully define this function
 
     /*
     I can create a bunch of quiz items, add them all to the QuizItems array, and then have a function
@@ -27,9 +36,9 @@ $(document).ready(function () {
     iterates through the QuizItems array.
     */
 
-    function DisplayQuizItem( item ) {
+    function DisplayQuizItem(item) {
         var displayedQuestion = this.Question;
-        $("#display-area").append( displayedQuestion );
+        $("#display-area").append(displayedQuestion);
     }
 
     console.log("Question 1:", QuizItem1.Question);
