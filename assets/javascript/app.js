@@ -5,15 +5,18 @@ $(document).ready(function () {
         "Question": "What does the 'TIE' in TIE Fighter stand for?",
         "Answers": {
             "Answer1": {
-                "Text" : "Twin Integrated Engine", "Correct": false }, 
+                "Text" : "Twice Integrated Engine",
+                "Correct": false }, 
             "Answer2": {
-                "Text" : "Trivial Imperial Ergonomics", "Correct": false }, 
+                "Text" : "Triton Instigated Exhaust",
+                "Correct": false }, 
             "Answer3": {
-                "Text" : "Twin Ion Engine", "Correct": false }, 
+                "Text" : "Twin Ion Engine",
+                "Correct": false }, 
             "Answer4": {
-                "Text" : "Some other acronym I don't know", "Correct": false }
-        },
-        
+                "Text" : "Tachyon Ignition Engine",
+                "Correct": false }
+        }, 
     }
 
     var QuizItems = [QuizItem1];
