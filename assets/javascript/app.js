@@ -14,6 +14,8 @@ $(document).ready(function () {
     in the Answers array. Not sure if that would be more efficient or not. 
 
     */
+   // TODO: add at least 10 questions
+
     var QuizItem1 = {
         "Question": "What does the 'TIE' in TIE Fighter stand for?",
         "Answers": ["Twice Integrated Engine", "Triton Instigated Exhaust", "Twin Ion Engine", "Tachyon Ignition Engine"],
@@ -28,7 +30,6 @@ $(document).ready(function () {
 
     var QuizItems = [QuizItem1, QuizItem2];
 
-    // TODO: fully define this function
 
     /*
     I can create a bunch of quiz items, add them all to the QuizItems array, and then have a function
@@ -37,8 +38,10 @@ $(document).ready(function () {
     */
 
     function DisplayQuizItem(item) {
-        var displayedQuestion = this.Question;
-        $("#display-area").append(displayedQuestion);
+        // var quizQuestion = $("<h3>").text(item.Question);
+        
+        $("#display-area").append($("<h3>").text(item.Question));
+        // TODO: add a loop that adds each of the questions from the QuizItem.Answers array
     }
 
     console.log("Question 1:", QuizItem1.Question);
