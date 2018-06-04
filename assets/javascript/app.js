@@ -4,6 +4,8 @@ $(document).ready(function () {
     var numWins = 0;
     var numLosses = 0;
     var currentQuizItem;
+    var numCorrect = 0;
+    var numWrong = 0;
     /*
 
     Question Template
@@ -19,11 +21,12 @@ $(document).ready(function () {
 
     */
    // TODO: add at least 10 questions
+   // TODO: change all references from "quiz" to "trivia"
 
     var QuizItem1 = {
-        "Question": "What does the 'TIE' in TIE Fighter stand for?",
-        "Answers": ["Twice Integrated Engine", "Triton Instigated Exhaust", "Twin Ion Engine", "Tachyon Ignition Engine"],
-        "Correct Answer": "Twin Ion Engine"
+        Question: "What does the 'TIE' in TIE Fighter stand for?",
+        Answers: ["Twice Integrated Engine", "Triton Instigated Exhaust", "Twin Ion Engine", "Tachyon Ignition Engine"],
+        CorrectAnswer: "Twin Ion Engine"
     };
 
     var QuizItem2 = {
@@ -50,6 +53,7 @@ $(document).ready(function () {
         CorrectAnswer: "Kashyyyk"
     };
 
+    // Array to hold all of the possible questions
     var QuizItems = [QuizItem1, QuizItem2, QuizItem3, QuizItem4, QuizItem5];
 
     
@@ -58,27 +62,49 @@ $(document).ready(function () {
     that accepts a quiz item as an argument. Once the function is set up, I'll set up a for loop that
     iterates through the QuizItems array.
     */
-   
-   function DisplayQuizItem(item) {
+
+    // Randomly selects a question from the bank of questions
+    function SelectQuizItem() {
+        var random = Math.floor(Math.random() * QuizItems.length);
+        var splicedQuizItem = QuizItems.splice(random, 1);
+        currentQuizItem = splicedQuizItem[0];
+    }
+
+    // Displays the quiz items on the display area
+    function DisplayQuizItem(item) {
        // Clear the quiz item container
        $("#display-area").empty();
-       // Load the quiz item to a variable
-       currentQuizItem = item;
        // Display the question on the page
        $("#display-area").append($("<h3>").text(item.Question));
-       // TODO: add a loop that adds each of the questions from the QuizItem.Answers array
        // Display the potential answers on the page
        item.Answers.forEach( function( answer ) {
            $("#display-area").append($("<p>").text( answer ).addClass("answer p-2 rounded text-center"));         
         });
     }
-
-    $("#display-area").on("click", ".answer", function() {
-        console.log("Something happened");
-    });
     
     $("#start-button").on("click", function() {
-        DisplayQuizItem( QuizItem1 );
+        SelectQuizItem();
+        console.log(currentQuizItem);
+        DisplayQuizItem( currentQuizItem );
+    });
+    
+    $("#display-area").on("click", ".answer", function() {
+        console.log($(this).text());
+        if( $(this).text() == currentQuizItem.CorrectAnswer) {
+            alert("That's right!");
+            numCorrect++;
+        }
+        else {
+            alert("That's wrong.");
+            numWrong++;
+        }
+        if( QuizItems.length == 0) {
+            alert("You answered them all. You got " + numCorrect + " correct and " + numWrong + " wrong.");
+        }
+        else {
+            SelectQuizItem();
+            DisplayQuizItem( currentQuizItem );
+        }
     });
     
 });
