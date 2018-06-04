@@ -3,9 +3,15 @@ $(document).ready(function () {
     // *Global game variables
     var numWins = 0;
     var numLosses = 0;
-    var currentQuizItem;
     var numCorrect = 0;
     var numWrong = 0;
+    var numMissed = 0;
+    var currentQuizItem;
+    var clicksAllowed = true; // Use this to enable/disable clicks depending on situation
+    const TIME_LIMIT = 10; // This will be the time limit for each question (multiplied by 1000)
+    var timer;  // Variable to hold the setTimeout
+    var timeLeft;
+    var questionTimeLeft; // Variable to hold the time left in seconds for each question
     /*
 
     Question Template
@@ -56,13 +62,6 @@ $(document).ready(function () {
     // Array to hold all of the possible questions
     var QuizItems = [QuizItem1, QuizItem2, QuizItem3, QuizItem4, QuizItem5];
 
-    
-    /*
-    I can create a bunch of quiz items, add them all to the QuizItems array, and then have a function
-    that accepts a quiz item as an argument. Once the function is set up, I'll set up a for loop that
-    iterates through the QuizItems array.
-    */
-
     // Randomly selects a question from the bank of questions
     function SelectQuizItem() {
         var random = Math.floor(Math.random() * QuizItems.length);
@@ -80,7 +79,26 @@ $(document).ready(function () {
        item.Answers.forEach( function( answer ) {
            $("#display-area").append($("<p>").text( answer ).addClass("answer p-2 rounded text-center"));         
         });
+        $("#questions-left").text(QuizItems.length);
+        StartCountdown();
     }
+
+    function StartCountdown() {
+        clearInterval(timer);
+        timeLeft = TIME_LIMIT;
+        timer = setInterval( function() {
+            $("#time-left").text(timeLeft);
+            timeLeft--;
+        }, 1000)
+    };
+   
+
+    /**
+     * TODO: add the clear countdown function
+     * function ClearCountdown() {
+     * 
+     * }
+     */
     
     $("#start-button").on("click", function() {
         SelectQuizItem();
@@ -88,6 +106,7 @@ $(document).ready(function () {
         DisplayQuizItem( currentQuizItem );
     });
     
+    // TODO: Split the two if/else statements into functions
     $("#display-area").on("click", ".answer", function() {
         console.log($(this).text());
         if( $(this).text() == currentQuizItem.CorrectAnswer) {

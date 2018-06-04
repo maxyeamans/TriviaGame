@@ -13,8 +13,16 @@
 
 <body>
     <div class="container">
-        <div class="jumbotron header">
+        <div class="jumbotron header pb-2">
             <h1 class="display-4">Trivia Game</h1>
+            <div class="row justify-content-between">
+                <div class="col-3">
+                    <p>Time left: <span id="time-left"></span></p>
+                </div>
+                <div class="col-3">
+                    <p>Questions left: <span id="questions-left"></span></p>
+                </div>
+            </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-med-8" id="display-area">
