@@ -8,7 +8,7 @@ $(document).ready(function () {
     var numMissed = 0;
     var currentQuizItem;
     var clicksAllowed = true; // Use this to enable/disable clicks depending on situation
-    const TIME_LIMIT = 10; // This will be the time limit for each question (multiplied by 1000)
+    const TIME_LIMIT = 3; // This will be the time limit for each question
     var timer;  // Variable to hold the setTimeout
     var timeLeft;
     var questionTimeLeft; // Variable to hold the time left in seconds for each question
@@ -65,46 +65,62 @@ $(document).ready(function () {
     // Randomly selects a question from the bank of questions
     function SelectQuizItem() {
         var random = Math.floor(Math.random() * QuizItems.length);
+        // Splicing, rather than selecting, the trivia item
+        // means it can't be picked twice in one game.
         var splicedQuizItem = QuizItems.splice(random, 1);
         currentQuizItem = splicedQuizItem[0];
+        console.log(currentQuizItem);
     }
 
     // Displays the quiz items on the display area
+    // TODO: Rewrite so this doesn't require an argument
     function DisplayQuizItem(item) {
-       // Clear the quiz item container
-       $("#display-area").empty();
-       // Display the question on the page
-       $("#display-area").append($("<h3>").text(item.Question));
-       // Display the potential answers on the page
-       item.Answers.forEach( function( answer ) {
-           $("#display-area").append($("<p>").text( answer ).addClass("answer p-2 rounded text-center"));         
+        StartCountdown();
+        // Clear the quiz item container
+        $("#display-area").empty();
+        // Display the question on the page
+        $("#display-area").append($("<h3>").text(item.Question));
+        // Display the potential answers on the page
+        item.Answers.forEach( function( answer ) {
+            $("#display-area").append($("<p>").text( answer ).addClass("answer p-2 rounded text-center"));         
         });
         $("#questions-left").text(QuizItems.length);
-        StartCountdown();
     }
-
+    
+    // ? Maybe I need to set up a function to clear interval
+    
     function StartCountdown() {
         clearInterval(timer);
         timeLeft = TIME_LIMIT;
         timer = setInterval( function() {
             $("#time-left").text(timeLeft);
             timeLeft--;
+            console.log($("#time-left").text())
+            // TODO: Edit this to end the game if there are no more questions.
+            if( $("#time-left").text() == "0" ) {
+                clearInterval(timer);
+                numMissed++;
+                alert("Oooh, you ran out of time.");
+                SelectQuizItem();
+                DisplayQuizItem( currentQuizItem );
+            };
         }, 1000)
     };
-   
-
-    /**
-     * TODO: add the clear countdown function
-     * function ClearCountdown() {
-     * 
-     * }
-     */
     
     $("#start-button").on("click", function() {
         SelectQuizItem();
-        console.log(currentQuizItem);
         DisplayQuizItem( currentQuizItem );
     });
+
+    function IsItOverYet() {
+        if( QuizItems.length == 0) {
+            alert("You made it through. You got " + numCorrect + " correct, " + numWrong + " wrong, and missed " + numMissed + ".");
+        }
+        else {
+            SelectQuizItem();
+            DisplayQuizItem( currentQuizItem );
+        }        
+    }
     
     // TODO: Split the two if/else statements into functions
     $("#display-area").on("click", ".answer", function() {
@@ -116,14 +132,8 @@ $(document).ready(function () {
         else {
             alert("That's wrong.");
             numWrong++;
-        }
-        if( QuizItems.length == 0) {
-            alert("You answered them all. You got " + numCorrect + " correct and " + numWrong + " wrong.");
-        }
-        else {
-            SelectQuizItem();
-            DisplayQuizItem( currentQuizItem );
-        }
+        };
+        IsItOverYet();
     });
     
 });
