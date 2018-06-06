@@ -7,7 +7,6 @@ $(document).ready(function () {
     var numWrong = 0;
     var numMissed = 0;
     var currentQuizItem;
-    var clicksAllowed = true; // Use this to enable/disable clicks depending on situation
     const TIME_LIMIT = 3; // This will be the time limit for each question
     var timer;  // Variable to hold the setTimeout
     var timeLeft;
@@ -41,9 +40,7 @@ $(document).ready(function () {
         });
         $("#questions-left").text(QuizItems.length);
     }
-    
-    // ? Maybe I need to set up a function to clear interval
-    
+        
     function StartCountdown() {
         clearInterval(timer);
         timeLeft = TIME_LIMIT;
@@ -51,7 +48,7 @@ $(document).ready(function () {
             $("#time-left").text(timeLeft);
             timeLeft--;
             console.log($("#time-left").text())
-            // TODO: Edit this to end the game if there are no more questions.
+            // Time's up? Move on to next question.
             if( $("#time-left").text() == "0" ) {
                 clearInterval(timer);
                 numMissed++;

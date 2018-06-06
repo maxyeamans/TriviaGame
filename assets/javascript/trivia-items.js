@@ -1,4 +1,18 @@
 /*
+    TODO: Set this up as an array of objects, write a function that adds just five to an array, like
+    gameArray = [];
+    for (var i = 0; gameArray.length < 5; i++) {
+        pickedIndex = [];
+        console.log(pickedIndex);
+        var questionIndex = Math.floor(Math.random() * gameArray.length);
+        if( pickedQuestions.indexOf(questionIndex) > -1) {
+            pickedQuestions.push(questionIndex);
+        }
+    }
+
+*/
+
+/*
 
     Question Template
 
