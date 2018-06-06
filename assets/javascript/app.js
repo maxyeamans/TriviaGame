@@ -12,55 +12,10 @@ $(document).ready(function () {
     var timer;  // Variable to hold the setTimeout
     var timeLeft;
     var questionTimeLeft; // Variable to hold the time left in seconds for each question
-    /*
-
-    Question Template
-
-    var QuizItemX = {
-        Question: "What was the question?",
-        Answers: ["First answer","Second answer","Third answer","Fourth answer"],
-        CorrectAnswer: "The correct answer"
-    };
-
-    I could probably make the CorrectAnswer property equal to the array index of the correct answer
-    in the Answers array. Not sure if that would be more efficient or not. 
-
-    */
-   // TODO: add at least 10 questions
-   // TODO: change all references from "quiz" to "trivia"
-
-    var QuizItem1 = {
-        Question: "What does the 'TIE' in TIE Fighter stand for?",
-        Answers: ["Twice Integrated Engine", "Triton Instigated Exhaust", "Twin Ion Engine", "Tachyon Ignition Engine"],
-        CorrectAnswer: "Twin Ion Engine"
-    };
-
-    var QuizItem2 = {
-        Question: "What is the official name of the walkers that assaulted the rebel base on Hoth?",
-        Answers: ["AT-AT", "Camel Walker", "AT-ST", "Walking Thingies"],
-        CorrectAnswer: "AT-AT"
-    };
-
-    var QuizItem3 = {
-        Question: "What's the highest military rank that Han Solo reached?",
-        Answers: ["Captain","Colonel","Admiral","General"],
-        CorrectAnswer: "General"
-    };
-
-    var QuizItem4 = {
-        Question: "What's the model number for the Millenium Falcon?",
-        Answers: ["YT-2400","T-65","YT-1300","MF-5010"],
-        CorrectAnswer: "YT-1300"
-    };
-
-    var QuizItem5 = {
-        Question: "What planet is Chewbacca from?",
-        Answers: ["Sullust","Kashyyyk","Ryloth","Endor"],
-        CorrectAnswer: "Kashyyyk"
-    };
+    
 
     // Array to hold all of the possible questions
-    var QuizItems = [QuizItem1, QuizItem2, QuizItem3, QuizItem4, QuizItem5];
+    var QuizItems = [QuizItem1, QuizItem2, QuizItem3, QuizItem4, QuizItem5, QuizItem6];
 
     // Randomly selects a question from the bank of questions
     function SelectQuizItem() {
@@ -107,19 +62,29 @@ $(document).ready(function () {
         }, 1000)
     };
     
-    $("#start-button").on("click", function() {
+    $(".start-button").on("click", function() {
         SelectQuizItem();
         DisplayQuizItem( currentQuizItem );
     });
 
     function IsItOverYet() {
         if( QuizItems.length == 0) {
-            alert("You made it through. You got " + numCorrect + " correct, " + numWrong + " wrong, and missed " + numMissed + ".");
+            // alert("You made it through. You got " + numCorrect + " correct, " + numWrong + " wrong, and missed " + numMissed + ".");
+            clearInterval(timer);
+            $("#display-area").empty();
+            var gameResults = $("<div>").addClass("lead").text("You made it through. You got " + numCorrect + " correct, " + numWrong + " wrong, and missed " + numMissed + ".");
+            var btnNewGame = $("<button>").addClass("start-button").text("Play again?");
+            $("#display-area").append(gameResults).append(btnNewGame);
+
         }
         else {
             SelectQuizItem();
             DisplayQuizItem( currentQuizItem );
         }        
+    }
+
+    function ResetStats() {
+
     }
     
     // TODO: Split the two if/else statements into functions
