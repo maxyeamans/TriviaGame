@@ -2,6 +2,12 @@
 TODO: add a transition to the color changes
 */
 
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: url("../images/background.jpg");
+    color: rgb(229, 177, 58);
+}
+
 .answer:hover{
-    background: red;
+    background: gray;
 }

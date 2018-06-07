@@ -1,16 +1,5 @@
-/*
-    TODO: Set this up as an array of objects, write a function that adds just five to an array, like the code below
-    
-    var numberArray = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen"];
-        var pickedArray = [];
-        for (; pickedArray.length < 5;) {
-            var randomIndex = Math.floor(Math.random() * numberArray.length);
-            if (!pickedArray.includes(numberArray[randomIndex])) {
-                pickedArray.push(numberArray[randomIndex]);
-            }
-        };
-
-*/
+// Constant to hold the maximum questions per game
+const MAX_ITEMS = 3;
 
 /*
 
@@ -24,7 +13,12 @@
 
 */
 
-/* Leia's name she presents to Jabba, ewok that helped Leia, name of the Rancor's caretaker, Emperor's name, Chewie's age */
+/* 
+    Potential questions to add:
+    - The name of the Rancor's caretaker
+    - The Emperor's name
+
+*/
 
 var QuizItem1 = {
     Question: "What does the 'TIE' in TIE Fighter stand for?",
@@ -62,15 +56,33 @@ var QuizItem6 = {
     CorrectAnswer: "Lobot"
 };
 
-var AllQuizItems = [QuizItem1, QuizItem2, QuizItem3, QuizItem4, QuizItem5, QuizItem6];
+var QuizItem7 = {
+    Question: "What's the name of the Ewok that helps Leia on the forest moon of Endor?",
+    Answers: ["Cindel","Wampa","Kettch","Wicket"],
+    CorrectAnswer: "Wicket"
+};
 
-function PickFiveItems( allItems ) {
-    var fiveItems = [];
-    for (; fiveItems.length < 5;) {
+var QuizItem8 = {
+    Question: "Which of these is NOT a Rebel starfighter?",
+    Answers: ["X-Wing","T-Wing","A-Wing","B-Wing"],
+    CorrectAnswer: "T-Wing"
+};
+
+var QuizItem9 = {
+    Question: "What is the Emperor's real name?",
+    Answers: ["Sheev","Boussh","Marvin","Trick question; he doesn't have a first name!"],
+    CorrectAnswer: "The correct answer"
+};
+
+var AllQuizItems = [QuizItem1, QuizItem2, QuizItem3, QuizItem4, QuizItem5, QuizItem6, QuizItem7, QuizItem8, QuizItem9];
+
+function PickSomeItems( allItems ) {
+    var someItems = [];
+    for (; someItems.length < MAX_ITEMS;) {
         var randomIndex = Math.floor(Math.random() * allItems.length);
-            if (!fiveItems.includes(allItems[randomIndex])) {
-                fiveItems.push(allItems[randomIndex]);
+            if (!someItems.includes(allItems[randomIndex])) {
+                someItems.push(allItems[randomIndex]);
             }
     };
-    return fiveItems;
+    return someItems;
 };
