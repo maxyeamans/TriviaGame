@@ -5,7 +5,7 @@ TODO: add a transition to the color changes
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background: url("../images/background.jpg");
-    color: rgb(229, 177, 58);
+    color: rgb(229, 177, 58); /* Supposedly this is the exact font color of the Star Wars logo */
 }
 
 .answer:hover{
