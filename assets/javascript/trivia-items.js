@@ -1,14 +1,14 @@
 /*
-    TODO: Set this up as an array of objects, write a function that adds just five to an array, like
-    gameArray = [];
-    for (var i = 0; gameArray.length < 5; i++) {
-        pickedIndex = [];
-        console.log(pickedIndex);
-        var questionIndex = Math.floor(Math.random() * gameArray.length);
-        if( pickedQuestions.indexOf(questionIndex) > -1) {
-            pickedQuestions.push(questionIndex);
-        }
-    }
+    TODO: Set this up as an array of objects, write a function that adds just five to an array, like the code below
+    
+    var numberArray = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen"];
+        var pickedArray = [];
+        for (; pickedArray.length < 5;) {
+            var randomIndex = Math.floor(Math.random() * numberArray.length);
+            if (!pickedArray.includes(numberArray[randomIndex])) {
+                pickedArray.push(numberArray[randomIndex]);
+            }
+        };
 
 */
 
