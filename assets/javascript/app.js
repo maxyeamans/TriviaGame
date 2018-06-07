@@ -14,7 +14,12 @@ $(document).ready(function () {
     
 
     // Array to hold all of the possible questions
-    var QuizItems = [QuizItem1, QuizItem2, QuizItem3, QuizItem4, QuizItem5, QuizItem6];
+    // var QuizItems = [QuizItem1, QuizItem2, QuizItem3, QuizItem4, QuizItem5, QuizItem6];
+    /*
+    
+    */
+   // This will hold the 5 quiz items for the game
+    var QuizItems = [];
 
     // Randomly selects a question from the bank of questions
     function SelectQuizItem() {
@@ -59,11 +64,7 @@ $(document).ready(function () {
         }, 1000)
     };
     
-    $(".start-button").on("click", function() {
-        SelectQuizItem();
-        DisplayQuizItem( currentQuizItem );
-    });
-
+    
     function IsItOverYet() {
         if( QuizItems.length == 0) {
             // alert("You made it through. You got " + numCorrect + " correct, " + numWrong + " wrong, and missed " + numMissed + ".");
@@ -72,14 +73,19 @@ $(document).ready(function () {
             var gameResults = $("<div>").addClass("lead").text("You made it through. You got " + numCorrect + " correct, " + numWrong + " wrong, and missed " + numMissed + ".");
             var btnNewGame = $("<button>").addClass("start-button").text("Play again?");
             $("#display-area").append(gameResults).append(btnNewGame);
-
+            
         }
         else {
             SelectQuizItem();
             DisplayQuizItem( currentQuizItem );
         }        
     }
-
+    
+    $(".start-button").on("click", function() {
+        QuizItems = PickFiveItems( AllQuizItems );
+        SelectQuizItem();
+        DisplayQuizItem( currentQuizItem );
+    });
     function ResetStats() {
 
     }

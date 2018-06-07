@@ -23,6 +23,9 @@
     };
 
 */
+
+/* Leia's name she presents to Jabba, ewok that helped Leia, name of the Rancor's caretaker, Emperor's name, Chewie's age */
+
 var QuizItem1 = {
     Question: "What does the 'TIE' in TIE Fighter stand for?",
     Answers: ["Twice Integrated Engine", "Triton Instigated Exhaust", "Twin Ion Engine", "Tachyon Ignition Engine"],
@@ -57,4 +60,17 @@ var QuizItem6 = {
     Question: "Which of these characters was NOT a bounty hunter tasked to find Han Solo?",
     Answers: ["Boba Fett","Lobot","Bossk","Dengar"],
     CorrectAnswer: "Lobot"
+};
+
+var AllQuizItems = [QuizItem1, QuizItem2, QuizItem3, QuizItem4, QuizItem5, QuizItem6];
+
+function PickFiveItems( allItems ) {
+    var fiveItems = [];
+    for (; fiveItems.length < 5;) {
+        var randomIndex = Math.floor(Math.random() * allItems.length);
+            if (!fiveItems.includes(allItems[randomIndex])) {
+                fiveItems.push(allItems[randomIndex]);
+            }
+    };
+    return fiveItems;
 };
