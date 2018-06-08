@@ -5,10 +5,10 @@ $(document).ready(function () {
     var numWrong = 0;
     var numMissed = 0;
     var currentQuizItem;
-    const TIME_LIMIT = 3; // This will be the time limit for each question
-    var timer;  // Variable to hold the setTimeout
+    const TIME_LIMIT = 10;   // This will be the time limit for each question
+    var timer;              // Variable to hold the setTimeout
     var timeLeft;
-    var questionTimeLeft; // Variable to hold the time left in seconds for each question
+    var questionTimeLeft;   // Variable to hold the time left in seconds for each question
 
 
 
@@ -26,8 +26,8 @@ $(document).ready(function () {
     };
 
     // Displays the quiz items on the display area
-    // TODO: Rewrite so this doesn't require an argument
     function DisplayQuizItem(item) {
+        // Start the timer for the question
         StartCountdown();
         // Clear the quiz item container
         $("#display-area").empty();
@@ -37,6 +37,7 @@ $(document).ready(function () {
         item.Answers.forEach(function (answer) {
             $("#display-area").append($("<p>").text(answer).addClass("answer p-2 rounded text-center"));
         });
+        // Display how many questions are left
         $("#questions-left").text(QuizItems.length);
     };
 

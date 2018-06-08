@@ -1,5 +1,5 @@
 // Constant to hold the maximum questions per game
-const MAX_ITEMS = 3;
+const MAX_ITEMS = 5;
 
 /*
 
