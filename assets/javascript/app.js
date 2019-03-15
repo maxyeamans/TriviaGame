@@ -88,7 +88,7 @@ $(document).ready(function () {
         numMissed = 0;
     };
 
-    $(".start-button").on("click", function () {
+    $(document).on("click", ".start-button", function () {
         ResetStats();
         QuizItems = PickSomeItems(AllQuizItems);
         SelectQuizItem();
