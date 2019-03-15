@@ -11,7 +11,7 @@ After pressing the start button, you'll get a barrage of questions about the Sta
 - [ ] Refactor the code to display an image rather than an alert on question answer.
     - This image should disappear after the user guesses their first letter on a new game.
 - [ ] Add code to play a sound when the game is over.
-- [ ] Fix the damn button at the end so that it restarts the game.
+- [x] Fix the damn button at the end so that it restarts the game.
 - [ ] Stylize the text more.
     - I need to find a suitable web font to make it more Star Wars-y.
 - [ ] Add buttons to select a difficulty
