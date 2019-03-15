@@ -1,10 +1,20 @@
 # TriviaGame
 
-## What it does
+## What it is
 
-This is a run-of-the-mill trivia game, based on a movie franchise that I hold near and dear to my heart: Star Wars.
+This is a trivia game based on a movie franchise that I hold near and dear to my heart: Star Wars. I made this to test out `setInterval()` functionality and further practice using jQuery for DOM manipulation.
 
-After pressing the start button, you'll get a barrage of questions about the Star Wars universe, and you'll have 8 seconds to answer each one. There are variables in the code to change both the number of questions and how many seconds you have to answer.
+## How to play
+
+After pressing the start button, you'll get a barrage of questions about the Star Wars universe, and you'll have 10 seconds to answer each one. There's a separate file to hold all of the trivia questions and a function to pull a specific number of questions for each game. The goal is that the user never gets the same 5 questions in the same order.
+
+## What I used
+
+* Bootstrap for the design
+* jQuery for DOM manipulation
+* Pure JavaScript for timer countdowns
+
+[Test your Star Wars knowledge!](https://maxyeamans.github.io/TriviaGame)
 
 ## Stuff left to do
 
